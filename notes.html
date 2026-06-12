@@ -6,31 +6,114 @@
 </head>
 <body>
 
-<header>
-  <div class="logo">📝 Notes</div>
-  <nav>
-    <a href="index.html">Home</a>
+<header class="header">
+  <div class="logo">
+    <span class="logo-icon">🧠</span>
+    <span class="logo-text">SmartNotes</span>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html" class="active">Home</a>
     <a href="notes.html">Notes</a>
     <a href="about.html">About</a>
   </nav>
+
+  <div class="actions">
+    <button class="theme-btn">🌙</button>
+  </div>
 </header>
 
-<div class="container">
+<div class="container notes-section">
 
-  <h2>My Notes</h2>
+  <div class="section-header">
+    <div>
+      <h2>📝 My Notes</h2>
+      <p>Write, organize and manage your thoughts in one place</p>
+    </div>
 
-  <input id="title" placeholder="Title">
-  <input id="tag" placeholder="Tag (#work)">
-  <textarea id="content" placeholder="Write something..."></textarea>
+    <div class="header-actions">
+      <span class="hint">Ctrl + Enter → Add</span>
+    </div>
+  </div>
 
-  <button class="btn" onclick="addNote()">Add Note</button>
+  <!-- INPUT CARD -->
+  <div class="note-input-card">
 
+    <div class="input-grid">
+      <div class="input-box">
+        <label>Title</label>
+        <input id="title" placeholder="e.g. Project idea..." />
+      </div>
+
+      <div class="input-box">
+        <label>Tag</label>
+        <input id="tag" placeholder="#work #idea" />
+      </div>
+    </div>
+
+    <div class="input-box full">
+      <label>Content</label>
+      <textarea id="content" placeholder="Write your idea here..."></textarea>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" onclick="addNote()">
+        ➕ Add Note
+      </button>
+
+      <button class="btn ghost" onclick="clearInputs()">
+        Clear
+      </button>
+    </div>
+
+  </div>
+
+  <!-- NOTES GRID -->
   <div class="grid" id="notes"></div>
 
 </div>
 
-<footer>
-  Smart Notes Ultra Footer
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <div class="logo">🧠 SmartNotes Ultra</div>
+      <p>
+        A modern notes & productivity tool built for developers, creators and thinkers.
+      </p>
+    </div>
+
+    <!-- LINKS -->
+    <div class="footer-links">
+      <h4>Product</h4>
+      <a href="index.html">Home</a>
+      <a href="notes.html">Notes</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Resources</h4>
+      <a href="#">Docs</a>
+      <a href="#">Support</a>
+      <a href="#">Privacy</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Connect</h4>
+      <a href="#">GitHub</a>
+      <a href="#">Twitter</a>
+      <a href="#">LinkedIn</a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 Smart Notes Ultra. All rights reserved.</p>
+  </div>
+
 </footer>
 
 <script src="script.js"></script>

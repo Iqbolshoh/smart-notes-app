@@ -33,5 +33,41 @@ function render(){
     `;
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+
+  const toggleBtn = document.getElementById("themeToggle");
+
+  // load saved theme
+  const savedTheme = localStorage.getItem("theme");
+
+  if(savedTheme === "light"){
+    document.body.classList.add("light");
+    toggleBtn.textContent = "☀️";
+  }
+
+  // toggle click
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light");
+
+    if(document.body.classList.contains("light")){
+      localStorage.setItem("theme", "light");
+      toggleBtn.textContent = "☀️";
+    } else {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.textContent = "🌙";
+    }
+  });
+
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".nav-link");
+  const page = window.location.pathname.split("/").pop();
+
+  links.forEach(link => {
+    if(link.getAttribute("href") === page){
+      link.classList.add("active");
+    }
+  });
+});
 
 render();
