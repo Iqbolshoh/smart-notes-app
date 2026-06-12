@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Notes App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>🧠 Smart Notes</h1>
+  </header>
+
+  <!-- INPUT -->
+  <div class="input-box">
+    <input id="title" placeholder="Note title...">
+    <input id="tag" placeholder="Tag (#work, #life)">
+  </div>
+
+  <textarea id="content" placeholder="Write your note..."></textarea>
+
+  <button onclick="addNote()">+ Add Note</button>
+
+  <!-- SEARCH -->
+  <input class="search" id="search" placeholder="🔍 Search notes..." oninput="renderNotes()">
+
+  <!-- NOTES -->
+  <div class="notes" id="notes"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
