@@ -22,13 +22,13 @@ function render(){
 
   box.innerHTML = "";
 
-  notes.forEach((n,i)=>{
+  notes.forEach((n)=>{
     box.innerHTML += `
       <div class="card">
-        <img src="https://source.unsplash.com/300x200/?notes,idea,workspace" />
+        <img src="https://source.unsplash.com/400x300/?technology,workspace,desk" />
         <h3>${n.title}</h3>
-        <small>${n.tag}</small>
-        <p>${n.content}</p>
+        <small style="color:#22c55e">${n.tag || "#note"}</small>
+        <p style="color:#94a3b8">${n.content}</p>
       </div>
     `;
   });
