@@ -681,12 +681,14 @@ body.light{
 }
 
 body{
+  margin:0;
+  font-family:Inter, sans-serif;
   background:var(--bg);
   color:var(--text);
   transition:0.3s;
 }
 
-/* NAV */
+/* HEADER */
 .header{
   display:flex;
   justify-content:space-between;
@@ -699,11 +701,21 @@ body{
   top:0;
 }
 
-/* LINKS */
+/* LOGO */
+.logo{
+  font-weight:700;
+}
+
+/* NAV */
+.nav{
+  display:flex;
+  gap:20px;
+}
+
 .nav-link{
-  color:var(--muted);
   text-decoration:none;
-  margin:0 10px;
+  color:var(--muted);
+  position:relative;
   transition:0.3s;
 }
 
@@ -715,18 +727,54 @@ body{
   color:var(--accent);
 }
 
-/* BUTTON */
-.theme-btn{
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:8px 10px;
-  border-radius:10px;
-  cursor:pointer;
-  color:var(--text);
-  transition:0.3s;
+.nav-link.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:100%;
+  height:2px;
+  background:var(--accent);
 }
 
-.theme-btn:hover{
-  transform:scale(1.05);
-  border-color:var(--accent);
+/* THEME BUTTON */
+.theme-btn{
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--card);
+  cursor:pointer;
+  color:var(--text);
+}
+:root{
+  --bg:#05070f;
+  --text:#ffffff;
+  --muted:#94a3b8;
+  --card:rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.08);
+  --accent:#22c55e;
+}
+
+/* LIGHT MODE */
+body.light{
+  --bg:#f8fafc;
+  --text:#0f172a;
+  --muted:#475569;
+  --card:#ffffff;
+  --border:#e2e8f0;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* GLOBAL FIX (ENG MUHIM QISM) */
+p, h1, h2, h3, h4, h5, h6, span, small, label{
+  color:var(--text);
+}
+
+/* muted text class */
+.muted{
+  color:var(--muted) !important;
 }

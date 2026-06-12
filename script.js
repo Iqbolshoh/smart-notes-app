@@ -1,3 +1,4 @@
+// ===== NOTES SYSTEM =====
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
 function save(){
@@ -5,15 +6,24 @@ function save(){
 }
 
 function addNote(){
-  let title = document.getElementById("title").value;
-  let tag = document.getElementById("tag").value;
-  let content = document.getElementById("content").value;
+  let title = document.getElementById("title");
+  let tag = document.getElementById("tag");
+  let content = document.getElementById("content");
 
   if(!title || !content) return;
 
-  notes.push({title, tag, content});
+  notes.push({
+    title: title.value,
+    tag: tag.value,
+    content: content.value
+  });
+
   save();
   render();
+
+  title.value = "";
+  tag.value = "";
+  content.value = "";
 }
 
 function render(){
@@ -22,43 +32,48 @@ function render(){
 
   box.innerHTML = "";
 
-  notes.forEach((n)=>{
+  notes.forEach(n=>{
     box.innerHTML += `
       <div class="card">
-        <img src="https://source.unsplash.com/400x300/?technology,workspace,desk" />
         <h3>${n.title}</h3>
-        <small style="color:#22c55e">${n.tag || "#note"}</small>
-        <p style="color:#94a3b8">${n.content}</p>
+        <small style="color:var(--accent)">${n.tag || "#note"}</small>
+        <p style="color:var(--muted)">${n.content}</p>
       </div>
     `;
   });
 }
-document.addEventListener("DOMContentLoaded", () => {
 
-  const toggleBtn = document.getElementById("themeToggle");
+render();
+
+
+// ===== THEME SYNC FIX (MAIN FIX) =====
+const toggleBtn = document.getElementById("themeToggle");
+
+if(toggleBtn){
 
   // load saved theme
-  const savedTheme = localStorage.getItem("theme");
+  const saved = localStorage.getItem("theme");
 
-  if(savedTheme === "light"){
+  if(saved === "light"){
     document.body.classList.add("light");
     toggleBtn.textContent = "☀️";
   }
 
-  // toggle click
   toggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("light");
 
     if(document.body.classList.contains("light")){
-      localStorage.setItem("theme", "light");
+      localStorage.setItem("theme","light");
       toggleBtn.textContent = "☀️";
     } else {
-      localStorage.setItem("theme", "dark");
+      localStorage.setItem("theme","dark");
       toggleBtn.textContent = "🌙";
     }
   });
+}
 
-});
+
+// ===== ACTIVE NAV FIX =====
 document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".nav-link");
   const page = window.location.pathname.split("/").pop();
@@ -69,5 +84,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-render();
